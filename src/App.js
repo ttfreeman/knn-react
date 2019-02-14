@@ -1,25 +1,26 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import InputCSV from "./components/InputCSV";
+import Output from "./components/Output";
+import Header from "./components/Header";
 
 class App extends Component {
+  state = {
+    csvData: []
+  };
+  getData = val => {
+    this.setState({ csvData: val });
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Header />
+        <div className="container">
+          <div className="row">
+            <InputCSV sendData={this.getData} />
+            <Output data={this.state.csvData} />
+          </div>
+        </div>
       </div>
     );
   }
