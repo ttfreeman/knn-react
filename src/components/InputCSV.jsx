@@ -51,13 +51,13 @@ class InputCSV extends React.Component {
         );
       case 2:
         return (
-          <button className="btn">
+          <button className="btn green">
             <span>&#10003;</span>
           </button>
         );
       case 3:
         return (
-          <button className="btn">
+          <button className="btn green">
             <span>&#9747;</span>
           </button>
         );
@@ -65,7 +65,7 @@ class InputCSV extends React.Component {
         return (
           <button
             onClick={this.importCSV}
-            className="btn"
+            className="btn green"
             disabled={!this.state.csvfile}
           >
             Upload now!
@@ -77,12 +77,8 @@ class InputCSV extends React.Component {
   render() {
     return (
       <div
-        style={{
-          maxWidth: "20rem",
-          border: "dotted black 1px",
-          padding: "1rem",
-          margin: "1rem 0"
-        }}
+        className="card-panel "
+        style={{margin: "1rem 2rem"}}
       >
         <h4>Import CSV File!</h4>
         <input

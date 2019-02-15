@@ -8,16 +8,16 @@ class Output extends React.Component {
   trainModel = () => {
     this.setState({ prediction: [], expected: [] });
     var data = this.props.data;
-
+    // debugger;
     var { features, labels, testFeatures, testLabels } = trainTestSplit(data, {
-      featureColumns: ["lat", "long", "sqft_lot", "sqft_living"],
-      labelColumns: ["price"],
+      featureColumns: this.props.featureColumns,
+      labelColumns: this.props.labelColumns,
       shuffle: true,
-      splitTest: 10
+      splitTest: parseFloat(this.props.parameters.splitTest)
     });
 
     testFeatures.forEach((element, i) => {
-      const result = knn(features, labels, element, 10);
+      const result = knn(features, labels, element, parseFloat(this.props.parameters.kValue));
       this.setState(prevState => ({
         prediction: [...prevState.prediction, result],
         expected: [...prevState.expected, testLabels[i][0]]
@@ -53,18 +53,18 @@ class Output extends React.Component {
 
   render() {
     return (
-      <div className="card-panel">
+      <div className="card-panel " style={{margin: "1rem 2rem"}} >
         <h4>Analysis</h4>
         <p>Data length= {this.props.data.length}</p>
         <button
           onClick={this.trainModel}
           disabled={this.props.data.length <= 0}
-          className="btn waves-effect waves-light"
+          className="btn green waves-effect waves-light"
         >
           Train - Predict
           <i className="material-icons right">play_arrow</i>
         </button>
-        {this.state.prediction.length > 0 && this.renderTable()}
+        {this.props.featureColumns.length > 0 && this.renderTable()}
       </div>
     );
   }

@@ -5,13 +5,14 @@ class Header extends React.Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper" style={{ padding: "0 1.5rem" }}>
-          <a href="#" className="brand-logo">
-            React-Tensorflow
-          </a>
+        <div className="nav-wrapper green lighten-2" >
+          <button href="#" className="brand-logo green flat" style={{ padding: "0.5rem 2rem", margin: "0.3rem 2rem" }}>
+            KNN ANALYSIS with Tensorflow.js
+          </button>
+
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
-              <a href="collapsible.html">Signup</a>
+              <button href="#" className="green flat" style={{ padding: "0.5rem 2rem", margin: "auto 2rem"}} disabled  >Signup</button>
             </li>
           </ul>
         </div>
